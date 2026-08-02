@@ -23,9 +23,14 @@ Python script using `yfinance` to pull historical market prices and calculate vo
 | SPY    | 15.10%          | -8.70%       | 1.12         | 4.25%          |
 | QQQ    | 19.80%          | -11.50%      | 1.28         | 4.25%          |
 
-## Setup & Run
+## How to Run
 
-Clone the repository:
-```bash
+# Clone the repository
 git clone https://github.com/dchun010/market-analyzer.git
 cd market-analyzer
+
+# Install dependencies
+pip install yfinance pandas numpy
+
+# Run the analyzer
+python quant_analyzer.py
