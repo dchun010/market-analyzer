@@ -7,7 +7,7 @@ def analyze_basket(tickers, start_date="2023-01-01", rf_rate=0.045):
     """Calculates basic risk and return metrics for a ticker basket."""
     print(f"Downloading market data for: {', '.join(tickers)}...")
 
-    # Grab auto-adjusted close prices and handle missing data
+    # get auto-adjusted close prices and fill missing data
     data = yf.download(tickers, start=start_date, auto_adjust=True)
     prices = data["Close"] if "Close" in data else data
 
@@ -20,24 +20,24 @@ def analyze_basket(tickers, start_date="2023-01-01", rf_rate=0.045):
         print("Error: No price data returned. Check tickers or date range.")
         return None
 
-    # Calculate daily returns
+    # calculate daily returns
     daily_rets = prices.pct_change().dropna()
 
-    # Core Metrics (Vectorized)
+    # core Metrics (Vectorized)
     total_ret = (prices.iloc[-1] / prices.iloc[0]) - 1
     ann_ret = daily_rets.mean() * 252
     ann_vol = daily_rets.std() * np.sqrt(252)
 
-    # Risk-adjusted metrics
+    # risk-adjusted metrics
     sharpe = (ann_ret - rf_rate) / ann_vol
 
-    # Max Drawdown calculation
+    # max drawdown calculation
     cum_rets = (1 + daily_rets).cumprod()
     peak = cum_rets.cummax()
     drawdown = (cum_rets - peak) / peak
     max_dd = drawdown.min()
 
-    # Combine into summary DataFrame
+    # combine into summary DataFrame
     df_results = pd.DataFrame(
         {
             "Total Return": total_ret,
@@ -47,7 +47,7 @@ def analyze_basket(tickers, start_date="2023-01-01", rf_rate=0.045):
         }
     )
 
-    # Format output for printing
+    # format output for printing
     print(f"\n--- Portfolio Summary (Rf = {rf_rate:.2%}) ---")
     out = df_results.copy()
     out["Total Return"] = out["Total Return"].map("{:.2%}".format)
