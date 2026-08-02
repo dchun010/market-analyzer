@@ -1,24 +1,19 @@
-# Quantitative Market & Risk Analyzer
+# Market Data & Risk Analyzer
 
-A Python-based financial data pipeline and risk engine that fetches time-series market data, cleans missing values, and evaluates risk-adjusted performance metrics across multi-asset portfolios.
+A Python script that fetches historical market data using `yfinance` to calculate key risk metrics (Volatility, Sharpe Ratio, Max Drawdown) for custom stock/ETF portfolios.
 
-## Key Features
-* **Automated Ingestion:** Pulls split and dividend-adjusted closing prices via `yfinance`.
-* **Data Janitoring:** Handles non-overlapping trading calendars and missing values using forward-fill (`ffill`) imputation.
-* **Risk Analytics:** Calculates annualized volatility, maximum drawdowns, and Sharpe ratios against customizable risk-free rates.
-* **Defensive Architecture:** Includes error handling for API timeouts and empty dataframe scenarios.
+## Features
+* **Data Fetching & Cleaning:** Automatically pulls adjusted closing prices and handles missing trading days via forward-fill (`ffill`).
+* **Risk Metrics:** Computes annualized volatility, maximum drawdown, and risk-adjusted returns against a customizable risk-free rate.
+* **Error Handling:** Gracefully handles API timeouts and empty ticker data.
 
-## Technical Stack
-* **Language:** Python 3.x
-* **Libraries:** `pandas`, `numpy`, `yfinance`
+## Quickstart
 
-## Sample Output
-```text
-==================================================
-      QUANTITATIVE RISK & MOMENTUM SUMMARY
-      Risk-Free Rate Assumed: 4.50%
-==================================================
-Ticker Total Return Ann. Volatility Sharpe Ratio Max Drawdown
-   SPY       45.21%          14.32%         1.82      -10.23%
-   QQQ       62.10%          18.65%         1.95      -13.15%
-   GLD       28.30%          12.80%         1.45       -8.40%
+```bash
+# Clone and install dependencies
+git clone [https://github.com/your-username/market-analyzer.git](https://github.com/your-username/market-analyzer.git)
+cd market-analyzer
+pip install pandas numpy yfinance
+
+# Run the analyzer
+python main.py
