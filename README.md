@@ -5,7 +5,7 @@ A Python script that fetches historical market data using `yfinance` to calculat
 ## Features
 * **Data Fetching & Cleaning:** Automatically pulls adjusted closing prices and handles missing trading days via forward-fill (`ffill`).
 * **Risk Metrics:** Computes annualized volatility, maximum drawdown, and risk-adjusted returns against a customizable risk-free rate.
-* **Error Handling:** Gracefully handles API timeouts and empty ticker data.
+* **Error Handling:** Handles API timeouts and empty ticker data.
 
 ## Quickstart
 
