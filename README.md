@@ -27,5 +27,5 @@ Python script using `yfinance` to pull historical market prices and calculate vo
 
 Clone the repository:
 ```bash
-git clone [https://github.com/dchun010/market-analyzer.git](https://github.com/dchun010/market-analyzer.git)
+git clone https://github.com/dchun010/market-analyzer.git
 cd market-analyzer
